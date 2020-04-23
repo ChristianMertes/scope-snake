@@ -4,9 +4,9 @@ import time
 import curses
 import random
 
-import logging
+# import logging
 
-logging.basicConfig(filename='test.log', level=logging.DEBUG)
+# logging.basicConfig(filename='test.log', level=logging.DEBUG)
 
 def write_line(window, text, line):
     col = 0
@@ -326,7 +326,7 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
         vertical_movement = (key == curses.KEY_UP or key == curses.KEY_DOWN)
         if vertical_movement:
             scaled_timeout = int((width * timeout) / (height * 2))
-            logging.info('Adapt timeout on vertical movement to ' + str(scaled_timeout))
+            # logging.info('Adapt timeout on vertical movement to ' + str(scaled_timeout))
             window.timeout(scaled_timeout)
         else:
             window.timeout(timeout)
