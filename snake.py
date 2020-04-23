@@ -4,9 +4,9 @@ import time
 import curses
 import random
 
-# import logging
+import logging
 
-# logging.basicConfig(filename='test.log', level=logging.DEBUG)
+logging.basicConfig(filename='test.log', level=logging.DEBUG)
 
 def write_line(window, text, line):
     col = 0
@@ -320,6 +320,15 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
 
     key = curses.KEY_RIGHT  # move to the right at the start
     while True:
+        vertical_movement = (key == curses.KEY_UP or key == curses.KEY_DOWN)
+        if vertical_movement:
+            scaled_timeout = int((width * timeout) / (height * 2))
+            logging.info('Adapt timeout on vertical movement to ' + str(scaled_timeout))
+            window.timeout(scaled_timeout)
+        else:
+            window.timeout(timeout)
+
+        
         prev_key = key
         since = time.time()
         key = window.getch()
@@ -401,7 +410,7 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
 
             timeout = max(timeout - timeout_step, min_timeout)
             # logging.info('Change timeout to: ' + str(timeout))
-            window.timeout(timeout)
+            # window.timeout(timeout)
             
         # redraw window
         window.erase()
@@ -415,7 +424,7 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
 
 def main(stdscr):
     curses.curs_set(0)
-    print_intro(stdscr)
+    # print_intro(stdscr)
     scopes = ['/citec/csra/home/living/dining/colorablelight/ceilinglamep1/',
               '/citec/csra/home/hallway/entrance/motiondetector/motionsensorentrancehallway/',
               '/citec/csra/control/center/colorablelight/recordstatelamp/']
