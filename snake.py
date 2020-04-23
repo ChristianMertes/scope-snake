@@ -14,8 +14,9 @@ def write_line(window, text, line):
         window.addch(line, col, char)
         col += 1
         window.refresh()
-        time.sleep(0.1)
+        time.sleep(0.01)
     time.sleep(0.5)
+
 
 def print_outro(stdscr):
     y, x = stdscr.getmaxyx()
@@ -39,29 +40,6 @@ def print_outro(stdscr):
     write_line(window, 'Vielen Dank fürs Spielen!', 4)
 
 
-    # window = stdscr.subwin(y - 20, x - 20, 10, 10)
-    # window.timeout(1000)
-    # window.addstr(0, 0, 'This is the introduction to the game...')
-    # continue_text = 'Drücke <Enter> zum starten ...'
-    # continue_text_empty = ' ' * len(continue_text)
-    # window.addstr(height - 1, width - 1 - len(continue_text), continue_text)
-    # window.refresh()
-
-    # key = window.getch()
-    # text = True
-    # while key != 10:  # wait for enter
-        # text = not text
-        # if text:
-            # window.addstr(height - 1, width - 1 - len(continue_text), continue_text)
-        # else:
-            # window.addstr(height - 1, width - 1 - len(continue_text),
-                          # continue_text_empty)
-        # window.refresh
-        # key = window.getch()
-
-    # window.clear()
-    # window.refresh()
-
 def print_intro(stdscr):
     y, x = stdscr.getmaxyx()
 
@@ -87,106 +65,6 @@ def print_intro(stdscr):
     write_line(window, 'Einige Entwickler scheinen ihre Komponenten noch nicht angepasst zu haben.', 7)
     write_line(window, 'Hilf ihnen, indem du die einzelnen Scope Komponenten in der richtigen Reihenfolge einsammelst.', 8)
 
-
-    # window = stdscr.subwin(y - 20, x - 20, 10, 10)
-    # window.timeout(1000)
-    # window.addstr(0, 0, 'This is the introduction to the game...')
-    continue_text = 'Drücke <Enter> zum starten ...'
-    continue_text_empty = ' ' * len(continue_text)
-    window.addstr(height - 1, width - 1 - len(continue_text), continue_text)
-    window.refresh()
-
-    key = window.getch()
-    text = True
-    while key != 10:  # wait for enter
-        text = not text
-        if text:
-            window.addstr(height - 1, width - 1 - len(continue_text), continue_text)
-        else:
-            window.addstr(height - 1, width - 1 - len(continue_text),
-                          continue_text_empty)
-        window.refresh
-        key = window.getch()
-
-    window.clear()
-    window.refresh()
-def print_intro(stdscr):
-    y, x = stdscr.getmaxyx()
-
-    height = 30
-    width = 100
-    y, x = stdscr.getmaxyx()
-    if x < width or y < height:
-        # logging.error('Terminal window is to small (' + str(x) + 'x' + str(y) + ') need at least (100x50)')
-        return
-   
-    start_x = int((x - width) / 2)
-    start_y = int((y - height) / 2)
-    window = stdscr.subwin(height, width, start_y, start_x)
-    window.timeout(1000)
-
-    write_line(window, 'Es ist wieder einmal soweit.', 0)
-    write_line(window, 'Eine Demo im CSRA muss von dir gegeben werden.', 1)
-    write_line(window, 'Deshalb testests du das Apartment nochmal auf Herz und Nieren.', 2)
-    write_line(window, '    ', 3)
-    write_line(window, 'Es läuft NICHTS!!!', 4)
-    write_line(window, '    ', 5)
-    write_line(window, 'Da fällt dir ein, dass sich die Scopes der Homeautomation mal wieder geändert haben...', 6)
-    write_line(window, 'Einige Entwickler scheinen ihre Komponenten noch nicht angepasst zu haben.', 7)
-    write_line(window, 'Hilf ihnen, indem du die einzelnen Scope Komponenten in der richtigen Reihenfolge einsammelst.', 8)
-
-
-    # window = stdscr.subwin(y - 20, x - 20, 10, 10)
-    # window.timeout(1000)
-    # window.addstr(0, 0, 'This is the introduction to the game...')
-    continue_text = 'Drücke <Enter> zum starten ...'
-    continue_text_empty = ' ' * len(continue_text)
-    window.addstr(height - 1, width - 1 - len(continue_text), continue_text)
-    window.refresh()
-
-    key = window.getch()
-    text = True
-    while key != 10:  # wait for enter
-        text = not text
-        if text:
-            window.addstr(height - 1, width - 1 - len(continue_text), continue_text)
-        else:
-            window.addstr(height - 1, width - 1 - len(continue_text),
-                          continue_text_empty)
-        window.refresh
-        key = window.getch()
-
-    window.clear()
-    window.refresh()
-def print_intro(stdscr):
-    y, x = stdscr.getmaxyx()
-
-    height = 30
-    width = 100
-    y, x = stdscr.getmaxyx()
-    if x < width or y < height:
-        # logging.error('Terminal window is to small (' + str(x) + 'x' + str(y) + ') need at least (100x50)')
-        return
-   
-    start_x = int((x - width) / 2)
-    start_y = int((y - height) / 2)
-    window = stdscr.subwin(height, width, start_y, start_x)
-    window.timeout(1000)
-
-    write_line(window, 'Es ist wieder einmal soweit.', 0)
-    write_line(window, 'Eine Demo im CSRA muss von dir gegeben werden.', 1)
-    write_line(window, 'Deshalb testests du das Apartment nochmal auf Herz und Nieren.', 2)
-    write_line(window, '    ', 3)
-    write_line(window, 'Es läuft NICHTS!!!', 4)
-    write_line(window, '    ', 5)
-    write_line(window, 'Da fällt dir ein, dass sich die Scopes der Homeautomation mal wieder geändert haben...', 6)
-    write_line(window, 'Einige Entwickler scheinen ihre Komponenten noch nicht angepasst zu haben.', 7)
-    write_line(window, 'Hilf ihnen, indem du die einzelnen Scope Komponenten in der richtigen Reihenfolge einsammelst.', 8)
-
-
-    # window = stdscr.subwin(y - 20, x - 20, 10, 10)
-    # window.timeout(1000)
-    # window.addstr(0, 0, 'This is the introduction to the game...')
     continue_text = 'Drücke <Enter> zum starten ...'
     continue_text_empty = ' ' * len(continue_text)
     window.addstr(height - 1, width - 1 - len(continue_text), continue_text)
