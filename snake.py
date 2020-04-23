@@ -318,6 +318,9 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
     stdscr.addstr(start_y + height + 3, start_x, 'Current scope: ' + current_scope)
     stdscr.refresh()
 
+    if fast_food:
+        food_moved = True
+
     key = curses.KEY_RIGHT  # move to the right at the start
     while True:
         vertical_movement = (key == curses.KEY_UP or key == curses.KEY_DOWN)
@@ -379,21 +382,23 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
                 return current_scope
 
         if fast_food:
-            for i in range(len(food)):
-                f = food[i]
-                f.move(food_directions[i])
-                # loop
-                if f.pos[0].x <= 0:
-                    f.pos[0].x = width - 2
-                elif f.pos[0].x >= (width - 1):
-                    f.pos[0].x = 1
-                if f.pos[0].y <= 0:
-                    f.pos[0].y = height - 2
-                elif f.pos[0].y >= (height - 1):
-                    f.pos[0].y = 1
+            food_moved = not food_moved
+            if not food_moved:
+                for i in range(len(food)):
+                    f = food[i]
+                    f.move(food_directions[i])
+                    # loop
+                    if f.pos[0].x <= 0:
+                        f.pos[0].x = width - 2
+                    elif f.pos[0].x >= (width - 1):
+                        f.pos[0].x = 1
+                    if f.pos[0].y <= 0:
+                        f.pos[0].y = height - 2
+                    elif f.pos[0].y >= (height - 1):
+                        f.pos[0].y = 1
 
-                if random.random() < 0.15:
-                    food_directions[i] = valid_keys[random.randint(0, 3)]
+                    if random.random() < 0.15:
+                        food_directions[i] = valid_keys[random.randint(0, 3)]
 
 
 
