@@ -14,7 +14,7 @@ def write_line(window, text, line):
         window.addch(line, col, char)
         col += 1
         window.refresh()
-        time.sleep(0.01)
+        time.sleep(0.1)
     time.sleep(0.5)
 
 
@@ -422,14 +422,14 @@ def main(stdscr):
     for i in range(len(scopes)):
         scope = scopes[i]
         reverse = i == 0 or i == 2
-        start_timeout = 100
-        min_timeout = 30
-        timeout_step = 10
+        start_timeout = 150
+        min_timeout = 75
+        timeout_step = 15
         fast_food = False
         if i == 2:
             fast_food = True
-            start_timeout = 150
-            min_timeout = 50
+            start_timeout = 200
+            min_timeout = 100
             timeout_step = 15
 
         result = snake_game(stdscr, scope, False, reverse, fast_food, start_timeout, min_timeout, timeout_step)
