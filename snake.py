@@ -328,7 +328,6 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
         else:
             window.timeout(timeout)
 
-        
         prev_key = key
         since = time.time()
         key = window.getch()
@@ -344,6 +343,18 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
 
         if key not in valid_keys:
             key = prev_key
+
+        # keep movement direction if the opposite key is pressed so that
+        # it is not possible to kill oneself accidentally
+        if prev_key == curses.KEY_LEFT and key == curses.KEY_RIGHT:
+            key = prev_key
+        elif prev_key == curses.KEY_RIGHT and key == curses.KEY_LEFT:
+            key = prev_key
+        elif prev_key == curses.KEY_DOWN and key == curses.KEY_UP:
+            key = prev_key
+        elif prev_key == curses.KEY_UP and key == curses.KEY_DOWN:
+            key = prev_key
+
         snake.move(key)
 
         # check self collisions
