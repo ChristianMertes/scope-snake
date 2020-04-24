@@ -440,7 +440,7 @@ def snake_game(stdscr, scope, loop_on_border=False, scope_reverse=False, fast_fo
 
 def main(stdscr):
     curses.curs_set(0)
-    # print_intro(stdscr)
+    print_intro(stdscr)
     scopes = ['/citec/csra/home/living/dining/colorablelight/ceilinglamep1/',
               '/citec/csra/home/hallway/entrance/motiondetector/motionsensorentrancehallway/',
               '/citec/csra/control/center/colorablelight/recordstatelamp/']
